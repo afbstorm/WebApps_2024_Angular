@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h2>
+    {{title}}
+  </h2>
+
+  <div class="inout-examples">
+    <p style="font-weight: bolder; text-decoration: underline"> Input envoyer à l'enfant pour qu'il les affiche</p>
+    <app-child info="Hello, je suis envoyé depuis le composant parent"></app-child>
+
+    <p style="font-weight: bolder; text-decoration: underline"> L'Output va déclencher un événement qui va être envoyer a l'enfant et l'enfant va renvoyer une valeur</p>
+    <input type="number" [(ngModel)]="num1">
+    +
+    <input type="number" [(ngModel)]="num2">
+    <app-child [num1]="num1" [num2]="num2" (calculToutCa)="calculationResult($event)"></app-child>
+    <p>{{result}}</p>
+
+    <p style="font-weight: bolder; text-decoration: underline"> Envoyer du contenu a l'enfant pour affichage via le selecteur ng-content</p>
+    <app-child>
+      <p>Hello, je suis afficher depuis le parent dans l'enfant gràce au ng-content</p>
+    </app-child>
+  </div>
+</div>

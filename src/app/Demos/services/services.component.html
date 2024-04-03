@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h2>
+    {{title}}
+  </h2>
+
+  <div class="inout-examples">
+
+    <h4>{{message}}</h4>
+
+    <input type="text" [(ngModel)]="newMessage">
+    <button (click)="setNewMessage()">Set New Notification</button>
+  </div>
+</div>

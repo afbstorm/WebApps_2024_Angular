@@ -1,0 +1,52 @@
+<div class="container">
+
+  <h2>
+    {{title}}
+  </h2>
+
+  <div class="forms-examples">
+    <p style="font-weight: bolder; text-decoration: underline">On récupère l'input via un form control, au submit on console.log la valeur</p>
+    <form (submit)="onControlSubmit($event)">
+      <input type="text" [formControl]="control">
+      <button type="submit">Submit control</button>
+    </form>
+
+    <p style="font-weight: bolder; text-decoration: underline">On récupère les inputs via un form group, au submit on console.log les valeur</p>
+    <form (submit)="onGroupSubmit($event)" [formGroup]="group">
+      <input type="text" formControlName="prenom">
+      <input type="text" formControlName="age">
+      <button type="submit">Submit control</button>
+    </form>
+
+    <p style="font-weight: bolder; text-decoration: underline">On récupère les input via un form array, au submit on console.log les valeur</p>
+    <form (submit)="onArraySubmit($event)" [formGroup]="array">
+      <button (click)="addControl()">Add control</button>
+      <div formArrayName="array">
+        <div *ngFor="let control of getArrayForm().controls; let i = index">
+          <p>{{i}}</p>
+          <input type="text" [formControlName]="i">
+        </div>
+      </div>
+      <button type="submit">Submit control</button>
+    </form>
+
+    <p style="font-weight: bolder; text-decoration: underline">On vérifie si les inputs sont valides selon nos Validators</p>
+    <form (submit)="onGroupSubmit($event)" [formGroup]="group">
+      <input type="text" formControlName="prenom">
+      @if (!group.get('prenom')?.valid && !group.get('prenom')?.untouched) {
+        <p>Ce champ est obligatoire</p>
+      }
+      <input type="text" formControlName="age">
+      @if (!group.get('age')?.valid && !group.get('age')?.untouched) {
+        <p>Ce champ est obligatoire</p>
+      }
+
+      @if (group.get('prenom')?.valid && group.get('age')?.valid) {
+        <button type="submit">Submit control</button>
+      } @else {
+        <button type="submit" disabled>Submit control</button>
+      }
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>
+    {{title}}
+  </h2>
+
+  <div class="directives-examples">
+    <p style="font-weight: bolder; text-decoration: underline"> On affiche SI et uniquement SI la condition est respectée via la directive *ngIf</p>
+    <div *ngIf="showIfTrueNgIf; else elseBlock">
+      <p>
+        Je suis visible car la condition est respectée : {{showIfTrueNgIf}}
+      </p>
+      <button (click)="showAndHideInvisibleThings()">
+        Cliques moi pour me cacher
+      </button>
+    </div>
+    <ng-template #elseBlock>
+      <p>
+        Je suis sur false donc je rentre dans le else : {{showIfTrueNgIf}}
+      </p>
+      <button (click)="showAndHideInvisibleThings()">
+        Cliques moi pour afficher la valeur true
+      </button>
+    </ng-template>
+
+    <p style="font-weight: bolder; text-decoration: underline"> On affiche SI et uniquement SI la condition est respectée via la directive if</p>
+    @if (showIfTrueIf) {
+      <div>
+        <p>
+          Je suis visible car la condition est respectée : {{showIfTrueIf}}
+        </p>
+        <button (click)="showAndHideInvisibleThings2()">
+          Cliques moi pour me cacher
+        </button>
+      </div>
+    } @else {
+      <div>
+        <p>
+          Je suis sur false donc je rentre dans le else : {{showIfTrueIf}}
+        </p>
+        <button (click)="showAndHideInvisibleThings2()">
+          Cliques moi pour afficher la valeur true
+        </button>
+      </div>
+    }
+
+
+
+    <p style="font-weight: bolder; text-decoration: underline"> On affiche le tableau via une boucle for directement dans l'html via la directive *ngFor</p>
+    <ul>
+      <li *ngFor="let things of arrayOfThingsToShow; let i = index">
+        {{i}} : {{things}}
+      </li>
+    </ul>
+
+    <p style="font-weight: bolder; text-decoration: underline"> On affiche le tableau via une boucle for directement dans l'html via la directive for</p>
+    <ul>
+      @for (things of arrayOfThingsToShow; let i = $index; track things) {
+        <li>{{i}} : {{things}}</li>
+      } @empty {
+        <li>Nothing to see here, move on.</li>
+      }
+    </ul>
+
+    <p style="font-weight: bolder; text-decoration: underline"> On change le background color d'un élément via une custom directive</p>
+    <button changesBackground>Great directive, merci !</button>
+  </div>
+</div>

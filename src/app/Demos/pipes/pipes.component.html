@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>
+    {{title}}
+  </h2>
+
+  <div class="pipes-examples">
+
+    <h4>Quelques pipes utiles et built-in</h4>
+
+    <p style="font-weight: bolder; text-decoration: underline"> En majuscule </p>
+    <p>{{stringMajuscule | uppercase}}</p>
+
+    <p style="font-weight: bolder; text-decoration: underline"> En minuscule </p>
+    <p>{{stringMinuscule | lowercase}}</p>
+
+    <p style="font-weight: bolder; text-decoration: underline"> Première lettre de chaque mot en majuscule </p>
+    <p>{{firstEnMajuscule | titlecase}}</p>
+
+    <p style="font-weight: bolder; text-decoration: underline"> Différents formats de date au format EU </p>
+    <p>On est le : {{dateDuJour | date:'short' }}</p>
+    <p>Mais on est aussi le : {{dateDuJour | date:'medium'}}</p>
+    <p>Et en plus on est aussi le : {{dateDuJour | date:'long'}}</p>
+
+    <p style="font-weight: bolder; text-decoration: underline"> Ajout du sigle de monnaie </p>
+    <p>Voici le prix : {{argentArgent | currency: 'EUR'}}</p>
+
+    <h4>Exemple de pipe custom</h4>
+
+    <p style="font-weight: bolder; text-decoration: underline"> On transforme un nombre en string et on passe la première lettre en majuscule</p>
+    <p>{{7 | custom | titlecase}}</p>
+  </div>
+</div>
