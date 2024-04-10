@@ -5,6 +5,9 @@
 
   <div class="directives-examples">
     <p style="font-weight: bolder; text-decoration: underline"> On affiche SI et uniquement SI la condition est respectée via la directive *ngIf</p>
+    <!--  <div *ngIf="showIfTrueNgIf; else elseBlock">: Ceci indique que le div (et son contenu) ne sera
+      affiché que si la valeur de showIfTrueNgIf est true. Si showIfTrueNgIf est false, alors
+      l'élément mentionné avec else instruction (ici, elseBlock) sera affiché à la place.  -->
     <div *ngIf="showIfTrueNgIf; else elseBlock">
       <p>
         Je suis visible car la condition est respectée : {{showIfTrueNgIf}}
@@ -13,6 +16,12 @@
         Cliques moi pour me cacher
       </button>
     </div>
+
+      <!--  <ng-template #elseBlock>: En Angular, les balises ng-template sont utilisées lorsque
+      vous souhaitez avoir quelque chose dans le code HTML mais que vous ne voulez pas qu'il
+      soit chargé par défaut. C'est comme un placeholder pour le contenu dynamique.
+      Ici, il est utilisé avec la directive *ngIf pour afficher du contenu de remplacement
+      lorsque showIfTrueNgIf est false.   -->
     <ng-template #elseBlock>
       <p>
         Je suis sur false donc je rentre dans le else : {{showIfTrueNgIf}}

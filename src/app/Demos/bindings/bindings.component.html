@@ -1,22 +1,31 @@
 <div class="container">
   <h2>
+    <!--  {{title}}: Syntaxe de liaison de la propriété title du composant à la balise <h2>.
+       Il utilise la liaison de données unidirectionnelle ou binding one-way  -->
     {{title}}
   </h2>
 
   <div class="bindings-examples">
     <h4>Binding One Way</h4>
+    <!--  {{bindingOneWaySimple}}: Syntaxe de liaison de la propriété title du composant à la balise <h2>.
+       Il utilise la liaison de données unidirectionnelle ou binding one-way  -->
     <p>{{bindingOneWaySimple}}</p>
+    <!--    [innerHTML]="bindingOneWayAvecComposantHTML": La valeur de la propriété bindingOneWayAvecComposantHTML du composant sera utilisée comme innerHTML de la balise <p> -->
     <p [innerHTML]="bindingOneWayAvecComposantHTML"></p>
 
 
     <h4>Binding Two Way</h4>
+    <!--  [(ngModel)]="bindingTwoWay": ngModel est utilisé pour la liaison de données bidirectionnelle (ou binding two-ways)
+    dans Angular. Cela signifie que toute modification de l'input mettra à jour la propriété bindingTwoWay    -->
     <input type="text" [(ngModel)]="bindingTwoWay">
     <p>{{bindingTwoWay}}</p>
 
 
     <h4>Binding d'événements</h4>
     <div class="buttons">
+    <!-- (click)="eventBinding()": L'événement click (onClick) est géré par la méthode eventBinding     -->
       <button (click)="eventBinding()">Clique sur moi pour activer mon événement !</button>
+    <!--  [class.test]="adaptativeClass" (click)="classBinding()": Ce bouton peut attribuer ou supprimer dynamiquement la classe .test en fonction de la propriété adaptativeClass    -->
       <button [class.test]="adaptativeClass" (click)="classBinding()">Clique sur moi pour activer / désactiver dynamiquement ma classe</button>
     </div>
     <h4>Binding d'attributs</h4>
