@@ -3,33 +3,64 @@
 </div>
 
 <nav>
-  <ul>
-    <li>
-      <a routerLink="/demos/bindings">Bindings</a>
-    </li>
-    <li>
-      <a routerLink="/demos/pipes">Pipes</a>
-    </li>
-    <li>
-      <a routerLink="/demos/directives">Directives</a>
-    </li>
-    <li>
-      <a routerLink="/demos/inout">Input - Output</a>
-    </li>
-    <li>
-      <a routerLink="/demos/services">Services</a>
-    </li>
-    <li>
-      <a routerLink="/demos/formulaires">Formulaires</a>
-    </li>
-    <li>
-      <a routerLink="/demos/storage">Storage</a>
-    </li>
-    <li>
-      <a routerLink="/demos/observable">Observable</a>
-    </li>
-    <li>
-      <a routerLink="/demos/http">Http client</a>
-    </li>
+  <ul class="nav-list">
+    @for (link of links; track link) {
+      <li appSubmenu>
+        <a routerLink="link.url">{{link.title}}</a>
+        <ul class="subnav-list">
+          @for (child of link.children; track child) {
+            <li>
+              <a routerLink="child.url">{{child.title}}</a>
+            </li>
+          } @empty {
+            <p>{{null}}</p>
+          }
+        </ul>
+      </li>
+    }
   </ul>
 </nav>
+
+<!--<nav>-->
+<!--  <ul class="nav-list">-->
+<!--    <li *ngFor="let link of links" appSubmenu>-->
+<!--      <a [routerLink]="link.url">{{ link.title }}</a>-->
+<!--      <ul class="subnav-list">-->
+<!--        <li *ngFor="let child of link.children">-->
+<!--          <a [routerLink]="child.url">{{ child.title }}</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
+
+
+<!--    <li>-->
+<!--      <a routerLink="/demos/bindings">Bindings</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/pipes">Pipes</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/directives">Directives</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/inout">Input - Output</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/services">Services</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/formulaires">Formulaires</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/storage">Storage</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/observable">Observable</a>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <a routerLink="/demos/http">Http client</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->

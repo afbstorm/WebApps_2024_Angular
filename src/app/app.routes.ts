@@ -8,6 +8,8 @@ import {FormulairesComponent} from "./Demos/formulaires/formulaires.component";
 import {StorageComponent} from "./Demos/storage/storage.component";
 import {ObservableComponent} from "./Demos/observable/observable.component";
 import {HttpComponent} from "./Demos/http/http.component";
+import {ChronoComponent} from "./Exos/chrono/chrono.component";
+import {Chronov2Component} from "./Exos/chronov2/chronov2.component";
 
 export const routes: Routes = [
   {path: 'demos', children: [
@@ -21,5 +23,8 @@ export const routes: Routes = [
       {path: 'observable', component: ObservableComponent},
       {path: 'http', component: HttpComponent}
     ]},
-
+  {path: 'exos', children: [
+      {path: 'chrono', component: ChronoComponent},
+      {path: 'chronov2', component: Chronov2Component},
+    ]}
 ];
