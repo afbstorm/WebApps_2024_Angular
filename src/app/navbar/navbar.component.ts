@@ -49,6 +49,11 @@ export class NavbarComponent {
           title: 'Chrono',
           url: '/exos/chrono',
           isVisible: false,
+        },
+        {
+          title: 'Tasks',
+          url: '/exos/tasks',
+          isVisible: false
         }
       ]
     }

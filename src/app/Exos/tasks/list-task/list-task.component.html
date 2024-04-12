@@ -1,0 +1,28 @@
+<h2>Liste :</h2>
+<div  class="liste-container">
+  @for (task of tasks; track task) {
+    @if (!task.completed) {
+      <p-card>
+        <p-header>
+          <h2>{{task.title}}</h2>
+        </p-header>
+        <p>{{task.description}}</p>
+        <p-footer class="button-container">
+          <app-delete-task [id]="task.id" (delete)="getList()"></app-delete-task>
+          <app-update-task [id]="task.id" (complete)="getList()"></app-update-task>
+        </p-footer>
+      </p-card>
+    } @else {
+      <p-card [style]="{'background-color': 'lightblue'}">
+        <p-header>
+          <h2>{{task.title}}</h2>
+        </p-header>
+        <p>{{task.description}}</p>
+        <p-footer>
+          <app-delete-task [id]="task.id" (delete)="getList()"></app-delete-task>
+        </p-footer>
+      </p-card>
+    }
+  }
+</div>
+

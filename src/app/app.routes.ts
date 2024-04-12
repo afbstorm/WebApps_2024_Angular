@@ -10,6 +10,8 @@ import {ObservableComponent} from "./Demos/observable/observable.component";
 import {HttpComponent} from "./Demos/http/http.component";
 import {ChronoComponent} from "./Exos/chrono/chrono.component";
 import {Chronov2Component} from "./Exos/chronov2/chronov2.component";
+import {Panierv1Component} from "./Exos/panierv1/panierv1.component";
+import {TasksComponent} from "./Exos/tasks/tasks.component";
 
 export const routes: Routes = [
   {path: 'demos', children: [
@@ -26,5 +28,7 @@ export const routes: Routes = [
   {path: 'exos', children: [
       {path: 'chrono', component: ChronoComponent},
       {path: 'chronov2', component: Chronov2Component},
+      {path: 'panierv1', component: Panierv1Component},
+      {path: 'tasks', component: TasksComponent}
     ]}
 ];

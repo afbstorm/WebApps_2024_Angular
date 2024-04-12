@@ -1,0 +1,6 @@
+<h2>Ajouter une tâche</h2>
+<div  class="form-container">
+  <input pInputText placeholder="Titre de la tâche" type="text" [(ngModel)]="newTask.title">
+  <input pInputText placeholder="Description de la tâche" type="text" [(ngModel)]="newTask.description">
+  <p-button (onClick)="addTask()">Ajouter</p-button>
+</div>
