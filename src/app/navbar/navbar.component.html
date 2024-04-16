@@ -6,11 +6,11 @@
   <ul class="nav-list">
     @for (link of links; track link) {
       <li appSubmenu>
-        <a routerLink="link.url">{{link.title}}</a>
+        <a [routerLink]="link.url">{{link.title}}</a>
         <ul class="subnav-list">
           @for (child of link.children; track child) {
             <li>
-              <a routerLink="child.url">{{child.title}}</a>
+              <a [routerLink]="child.url">{{child.title}}</a>
             </li>
           } @empty {
             <p>{{null}}</p>

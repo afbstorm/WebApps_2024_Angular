@@ -38,6 +38,11 @@ export class NavbarComponent {
           url: '/demos/directives',
           isVisible: false,
         },
+        {
+          title: 'Http',
+          url: '/demos/http',
+          isVisible: false,
+        },
       ]
     },
     {
@@ -53,6 +58,11 @@ export class NavbarComponent {
         {
           title: 'Tasks',
           url: '/exos/tasks',
+          isVisible: false
+        },
+        {
+          title: 'Forms',
+          url: '/exos/forms',
           isVisible: false
         }
       ]

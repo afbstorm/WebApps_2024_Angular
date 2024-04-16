@@ -1,0 +1,24 @@
+<section>
+  <form (submit)="login()" [formGroup]="group">
+    <input type="text" formControlName="username">
+    @if (!group.get('username')?.valid && !group.get('username')?.untouched) {
+      <p>Ce champ est obligatoire</p>
+    }
+
+    <input type="password" formControlName="password">
+    @if (!group.get('password')?.valid && !group.get('password')?.untouched) {
+      @if (!group.get('password')?.errors?.['min']) {
+        <p>Le mot de passe doit faire minimum 8 caractères</p>
+      } @else {
+        <p>Ce champ est obligatoire</p>
+      }
+    }
+
+    @if (group.valid) {
+      <button type="submit">Login</button>
+    }
+    @if (displayError) {
+      <p>{{displayError}}</p>
+    }
+  </form>
+</section>

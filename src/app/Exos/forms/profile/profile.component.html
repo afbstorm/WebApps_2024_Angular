@@ -1,0 +1,114 @@
+<section>
+<!--  novalidate permet de désactiver les vérifications native a l'html du navigateur pour laisser la main a Angumar -->
+  <form (submit)="submitProfileForm($event)" [formGroup]="profileInfos" novalidate>
+      <input pInputText formControlName="lastname" placeholder="Lastname...">
+    @if (profileInfos.get('lastname')?.errors) {
+      @if (profileInfos.get('lastname')?.errors?.['required'] && !profileInfos.get('lastname')?.untouched) {
+        <span class="p-error">This field is required</span>
+      } @else if (profileInfos.get('lastname')?.errors?.['minlength']) {
+        <span class="p-error">This field required at least 3 characters long</span>
+      } @else if (profileInfos.get('lastname')?.errors?.['maxlength']) {
+        <span class="p-error">This field required maximum 20 characters long</span>
+      }
+    }
+    <div formArrayName="firstname">
+      @for (control of getFirstnameArray().controls; let i = $index; track control) {
+        <input pInputText [formControlName]="i" placeholder="Firstname...">
+        @if (profileInfos.get('firstname')?.errors) {
+          @if (profileInfos.get('firstname')?.errors?.['required'] && !profileInfos.get('firstname')?.untouched) {
+            <span class="p-error">This field is required</span>
+          } @else if (profileInfos.get('firstname')?.errors?.['minlength']) {
+            <span class="p-error">This field required at least 3 characters long</span>
+          } @else if (profileInfos.get('firstname')?.errors?.['maxlength']) {
+            <span class="p-error">This field required maximum 20 characters long</span>
+          }
+        }
+        @if (i !== 0) {
+          <p-button (click)="removeFirstname(i)" size="small" severity="help">Remove this firstname</p-button>
+        }
+      }
+      <p-button (click)="addFirstname()" size="small" severity="help">Add a firstname</p-button>
+    </div>
+      <input pInputText formControlName="email" placeholder="Email...">
+    @if (profileInfos.get('email')?.errors) {
+      @if (profileInfos.get('email')?.errors?.['required'] && !profileInfos.get('email')?.untouched) {
+        <span class="p-error">This field is required</span>
+      } @else if (profileInfos.get('email')?.errors?.['email']) {
+        <span class="p-error">This input hasn't the correct format</span>
+      }
+    }
+      <input pInputText formControlName="pseudo" placeholder="Pseudo...">
+    @if (profileInfos.get('pseudo')?.errors) {
+      @if (profileInfos.get('pseudo')?.errors?.['required'] && !profileInfos.get('pseudo')?.untouched) {
+        <span class="p-error">This field is required</span>
+      } @else if (profileInfos.get('pseudo')?.errors?.['minlength']) {
+        <span class="p-error">This field required at least 8 characters long</span>
+      } @else if (profileInfos.get('pseudo')?.errors?.['maxlength']) {
+        <span class="p-error">This field required maximum 20 characters long</span>
+      }
+    }
+
+      <input pInputText formControlName="jobTitle" placeholder="Job title...">
+    @if (profileInfos.get('jobTitle')?.errors) {
+      @if (profileInfos.get('jobTitle')?.errors?.['required'] && !profileInfos.get('jobTitle')?.untouched) {
+        <span class="p-error">This field is required</span>
+      } @else if (profileInfos.get('jobTitle')?.errors?.['minlength']) {
+        <span class="p-error">This field required at least 3 characters long</span>
+      } @else if (profileInfos.get('jobTitle')?.errors?.['maxlength']) {
+        <span class="p-error">This field required maximum 50 characters long</span>
+      }
+    }
+      <textarea pInputTextarea formControlName="jobDescription" placeholder="Job description..."></textarea>
+    @if (profileInfos.get('jobDescription')?.errors) {
+      @if (profileInfos.get('jobDescription')?.errors?.['required'] && !profileInfos.get('jobDescription')?.untouched) {
+        <span class="p-error">This field is required</span>
+      } @else if (profileInfos.get('jobDescription')?.errors?.['minlength']) {
+        <span class="p-error">This field required at least 10 characters long</span>
+      } @else if (profileInfos.get('jobDescription')?.errors?.['maxlength']) {
+        <span class="p-error">This field required maximum 250 characters long</span>
+      }
+    }
+
+    <div formGroupName="address">
+      <input pInputText formControlName="street" placeholder="Street...">
+      @if (profileInfos.get('address.street')?.errors) {
+        @if (profileInfos.get('address.street')?.errors?.['required'] && !profileInfos.get('address.street')?.untouched) {
+          <span class="p-error">This field is required</span>
+        } @else if (profileInfos.get('address.street')?.errors?.['minlength']) {
+          <span class="p-error">This field required at least 3 characters long</span>
+        } @else if (profileInfos.get('address.street')?.errors?.['maxlength']) {
+          <span class="p-error">This field required maximum 30 characters long</span>
+        }
+      }
+      <input pInputText formControlName="numero" placeholder="Numero...">
+      @if (profileInfos.get('address.numero')?.errors) {
+        @if (profileInfos.get('address.numero')?.errors?.['required'] && !profileInfos.get('address.numero')?.untouched) {
+          <span class="p-error">This field is required</span>
+        } @else if (profileInfos.get('address.numero')?.errors?.['maxlength']) {
+          <span class="p-error">This field required maximum 3 characters long</span>
+        }
+      }
+      <input pInputText formControlName="city" placeholder="City...">
+      @if (profileInfos.get('address.city')?.errors) {
+        @if (profileInfos.get('address.city')?.errors?.['required'] && !profileInfos.get('address.city')?.untouched) {
+          <span class="p-error">This field is required</span>
+        } @else if (profileInfos.get('address.city')?.errors?.['minlength']) {
+          <span class="p-error">This field required at least 3 characters long</span>
+        } @else if (profileInfos.get('address.city')?.errors?.['maxlength']) {
+          <span class="p-error">This field required maximum 30 characters long</span>
+        }
+      }
+      <input pInputText formControlName="cp" placeholder="Zip code...">
+      @if (profileInfos.get('address.cp')?.errors) {
+        @if (profileInfos.get('address.cp')?.errors?.['required'] && !profileInfos.get('address.cp')?.untouched) {
+          <span class="p-error">This field is required</span>
+        } @else if (profileInfos.get('address.cp')?.errors?.['minlength']) {
+          <span class="p-error">This field required at least 4 characters long</span>
+        } @else if (profileInfos.get('address.cp')?.errors?.['maxlength']) {
+          <span class="p-error">This field required maximum 4 characters long</span>
+        }
+      }
+    </div>
+    <p-button type="submit" severity="success">Save infos</p-button>
+  </form>
+</section>

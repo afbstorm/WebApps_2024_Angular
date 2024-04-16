@@ -24,7 +24,7 @@ export class FormulairesComponent {
 
     this.group = this.formBuilder.group({
       prenom: [null, Validators.required],
-      age: [null, Validators.required]
+      age: [null, Validators.required, Validators.min(18)]
   })
 
     this.array = this.formBuilder.group({

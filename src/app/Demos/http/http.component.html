@@ -1,1 +1,4 @@
-<p>http works!</p>
+
+@for (todo of todos; track todo) {
+    <h2>Is {{todo.title}} completed ? {{todo.completed}}</h2>
+}

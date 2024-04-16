@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {DataService} from "./data.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-http',
@@ -7,6 +9,19 @@ import { Component } from '@angular/core';
   templateUrl: './http.component.html',
   styleUrl: './http.component.scss'
 })
-export class HttpComponent {
+export class HttpComponent implements OnInit, OnDestroy {
+  todos!: any[];
+  dataObs!: Subscription;
 
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.dataObs = this.dataService.getData().subscribe(data => {
+      this.todos = data;
+    });
+  }
+
+  ngOnDestroy() {
+    this.dataObs.unsubscribe();
+  }
 }
